@@ -1,0 +1,9 @@
+name: MiddCraft
+description: A custom plugin for MiddCraft
+version: 1.0
+main: me.picajoluna.middcraft.MiddCraft
+authors: [Picajoluna]
+permissions:
+  middcraft.chat:
+    description: gives permission to send messages in the chat
+    default: op
