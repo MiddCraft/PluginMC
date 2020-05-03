@@ -30,7 +30,7 @@ public class Chat implements Listener {
             event.setCancelled(true);
             player.sendMessage(ChatColor.GRAY + "Visitors do not have permission to chat.");
             player.sendMessage(ChatColor.GRAY + "If you are a Middlebury student, staff or alumn, " +
-                    "please visit https://middcraft.ddns.net/ to see how to obtain your chat and build permissions.");
+                    "please visit https://middcraft.com/join to see how to obtain your chat and build permissions.");
         }
     }
 
