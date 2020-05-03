@@ -1,2 +1,3 @@
 motd-all: "Welcome to MiddCraft! Join the Discord: https://discord.gg/evMdvQx"
 motd-no-perms: "If you are Midd student, ask an admin for build perms!"
+no-chat: "Visitors do not have permission to chat."

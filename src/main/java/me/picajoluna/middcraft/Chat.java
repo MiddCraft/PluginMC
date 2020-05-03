@@ -26,11 +26,10 @@ public class Chat implements Listener {
     @EventHandler
     public void denyChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
+        String noChat = this.getConfig().getString("no-chat");
         if(!player.hasPermission("middcraft.chat")) {
             event.setCancelled(true);
-            player.sendMessage(ChatColor.GRAY + "Visitors do not have permission to chat.");
-            player.sendMessage(ChatColor.GRAY + "If you are a Middlebury student, staff or alumn, " +
-                    "please visit https://middcraft.com/join to see how to obtain your chat and build permissions.");
+            player.sendMessage(noChat);
         }
     }
 
