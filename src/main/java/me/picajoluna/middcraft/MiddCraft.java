@@ -6,6 +6,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+/**
+ * Main class for the MiddCraft plugin.
+ */
+
 public class MiddCraft extends JavaPlugin implements Listener {
     private static MiddCraft middcraft;
 
@@ -17,7 +21,11 @@ public class MiddCraft extends JavaPlugin implements Listener {
         middcraft = this;
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "MiddCraft enabled!");
         this.saveDefaultConfig();
-        this.registerEvents(new Chat(), new Blocks());
+        this.registerEvents(
+                new Chat(),
+                new Blocks(),
+                new Welcome()
+        );
     }
 
     public void registerEvents(Listener... listeners) {
