@@ -12,6 +12,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 /**
  * Class to handle playerJoin events:
@@ -26,17 +28,17 @@ public class Welcome implements Listener {
         return (Configuration)(this.middcraft != null ? this.middcraft.getConfig() : new YamlConfiguration());
     }
 
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        this.sendPlayerMOTD(player);
-    }
-
     /**
      * Sends player a message on join, depending on the player's group. Messages are written in the config file.
      * Players inheriting permissions from group "build" (i.e. everyone, but group default)
      * receive the "motd-all" message. Those without receive the "motd-no-perms" message.
      */
+    @EventHandler
+    public void messageOnJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        this.sendPlayerMOTD(player);
+    }
+
     public void sendPlayerMOTD(Player player) {
         String group = "build";
         String motdAll = this.getConfig().getString("motd-all");
@@ -60,7 +62,7 @@ public class Welcome implements Listener {
      * Gives a player a compass on join, if inventory not full & contains no compass.
      */
     @EventHandler
-    public void defaultJoinItems(PlayerJoinEvent event){
+    public void defaultItemsOnJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
         PlayerInventory inv = player.getInventory();
 
@@ -74,4 +76,21 @@ public class Welcome implements Listener {
             inv.setItem(inv.firstEmpty(), compasses);
         }
     }
+
+
+    /**
+     * Gives a player 'infinite' night-vision effect upon join.
+     * The 'infinite' value is the max possible integer value, which is 2^31 - 1
+     */
+    @EventHandler
+    public void potionEffectsoOnJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        player.addPotionEffect((new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 1)));
+    }
+
+
+
+
+
+
 }
