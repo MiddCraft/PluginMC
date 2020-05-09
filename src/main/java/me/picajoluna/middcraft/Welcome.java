@@ -67,7 +67,7 @@ public class Welcome implements Listener {
 
         ItemStack compasses = new ItemStack(Material.COMPASS, 1);
         ItemMeta im = compasses.getItemMeta();
-        im.setDisplayName(ChatColor.GOLD + "Right-click to teleport" + ChatColor.GRAY + ", " + ChatColor.GREEN + "Left-click to go through blocks!");
+        im.setDisplayName(ChatColor.GOLD + "Left-click to teleport" + ChatColor.GRAY + ", " + ChatColor.GREEN + "Right-click to go through blocks!");
         compasses.setItemMeta(im);
 
         /** player.getInventory().firstEmpty() returns -1 if there are no available slots in the inventory */
