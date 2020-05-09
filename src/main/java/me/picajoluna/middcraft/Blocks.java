@@ -11,6 +11,10 @@ import org.bukkit.event.block.BlockDropItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.BlockInventoryHolder;
 
+/**
+ * Class to handle block interactions.
+ */
+
 public class Blocks implements Listener {
 
     @EventHandler
