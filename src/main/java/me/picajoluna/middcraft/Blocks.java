@@ -18,32 +18,25 @@ import org.bukkit.inventory.BlockInventoryHolder;
 public class Blocks implements Listener {
 
     @EventHandler
-    public void playerDropsBlock(PlayerDropItemEvent event) {
+    public void cancelPlayerItemDrops(PlayerDropItemEvent event) {
         Player player = event.getPlayer();
         if (player.hasPermission("group.build")) {
             player.sendMessage(ChatColor.GRAY + "You can't drop items; use a chest to exchange items with other players.");
         } else {
-            player.sendMessage("You can't drop blocks.");
+            player.sendMessage(ChatColor.GRAY + "You can't drop items.");
         }
 
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void blockDropsFromBlock(BlockDropItemEvent event) {
+    public void cancelBlockDrops(BlockDropItemEvent event) {
         event.setCancelled(true);
     }
 
     @EventHandler
-    public void blockDropsFromDispenser(BlockDispenseEvent event) {
+    public void cancelDispenserDrops(BlockDispenseEvent event) {
         event.setCancelled(true);
     }
 
-    @EventHandler
-    public void blockBroken(BlockBreakEvent event) {
-        Block block = event.getBlock();
-        if (block.getState() instanceof BlockInventoryHolder) {
-        }
-
-    }
 }
