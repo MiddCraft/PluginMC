@@ -16,15 +16,15 @@ public class Chat implements Listener {
     /**
      * Players without the "middcraft.chat" permission cannot chat.
      * Group "build" has the permission, which everyone aside from "default" inherits,
-     * so everybody but "default" (visitors" can chat).
+     * so everybody but "default" (visitors) can chat.
      */
     @EventHandler
     public void restrictChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        String noChat = MiddCraft.getPluginInstance().getConfig().getString("no-chat");
+        String noChatMessage = MiddCraft.getPluginInstance().getConfig().getString("no-chat");
         if(!player.hasPermission("middcraft.chat")) {
             event.setCancelled(true);
-            player.sendMessage(noChat);
+            player.sendMessage(noChatMessage);
         }
     }
 }
