@@ -1,4 +1,4 @@
-package me.picajoluna.middcraft;
+package com.middcraft.middcraft;
 
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;

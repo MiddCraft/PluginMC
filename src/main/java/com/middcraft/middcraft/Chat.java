@@ -1,5 +1,4 @@
-
-package me.picajoluna.middcraft;
+package com.middcraft.middcraft;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
