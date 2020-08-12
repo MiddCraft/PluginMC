@@ -21,11 +21,6 @@ import org.bukkit.potion.PotionEffectType;
  */
 
 public class Welcome implements Listener {
-    private MiddCraft middcraft = MiddCraft.getPluginInstance();
-
-    private Configuration getConfig() {
-        return (Configuration)(this.middcraft != null ? this.middcraft.getConfig() : new YamlConfiguration());
-    }
 
     /**
      * Sends player a message on join, depending on the player's group. Messages are written in the config file.
@@ -36,25 +31,6 @@ public class Welcome implements Listener {
     public void messageOnJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         this.sendPlayerMOTD(player);
-    }
-
-    public void sendPlayerMOTD(Player player) {
-        String group = "build";
-        String motdAll = this.getConfig().getString("motd-all");
-        String noPermsMessage = this.getConfig().getString("motd-no-perms");
-        if (!this.isPlayerInGroup(player, group)) {
-            String motd = motdAll + "\n" + noPermsMessage;
-            player.sendMessage(motd);
-        } else {
-            player.sendMessage(motdAll);
-        }
-    }
-
-    /**
-     * Returns a player's permissions group in format: "group.groupname" (e.g. "group.student")
-     */
-    public boolean isPlayerInGroup(Player player, String group) {
-        return player.hasPermission("group." + group);
     }
 
     /**
@@ -76,20 +52,33 @@ public class Welcome implements Listener {
         }
     }
 
-
     /**
      * Gives a player 'infinite' night-vision effect upon join.
      * The 'infinite' value is the max possible integer value, which is 2^31 - 1
      */
     @EventHandler
-    public void potionEffectsoOnJoin(PlayerJoinEvent event) {
+    public void potionEffectsOnJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         player.addPotionEffect((new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 1)));
     }
 
+    public void sendPlayerMOTD(Player player) {
+        String group = "build";
+        String motdAll = MiddCraft.getPluginInstance().getConfig().getString("motd-all");
+        String noPermsMessage = MiddCraft.getPluginInstance().getConfig().getString("motd-no-perms");
+        if (!this.isPlayerInGroup(player, group)) {
+            String motd = motdAll + "\n" + noPermsMessage;
+            player.sendMessage(motd);
+        } else {
+            player.sendMessage(motdAll);
+        }
+    }
 
-
-
-
+    /**
+     * Returns a player's permissions group in format: "group.groupname" (e.g. "group.student")
+     */
+    public boolean isPlayerInGroup(Player player, String group) {
+        return player.hasPermission("group." + group);
+    }
 
 }

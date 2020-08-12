@@ -17,6 +17,7 @@ public class MiddCraft extends JavaPlugin implements Listener {
         return middcraft;
     }
 
+    @Override
     public void onEnable() {
         middcraft = this;
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "MiddCraft enabled!");
@@ -35,7 +36,9 @@ public class MiddCraft extends JavaPlugin implements Listener {
         }
     }
 
+    @Override
     public void onDisable() {
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.YELLOW + "MiddCraft disabled.");
+        middcraft = null;
     }
 }
