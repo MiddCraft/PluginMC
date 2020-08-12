@@ -1,7 +1,7 @@
 name: MiddCraft
 description: A custom plugin for MiddCraft
-version: 1.0
-main: me.picajoluna.middcraft.MiddCraft
+version: 1.0.0-SNAPSHOT
+main: com.middcraft.middcraft.MiddCraft
 authors: [Picajoluna]
 permissions:
   middcraft.chat:
