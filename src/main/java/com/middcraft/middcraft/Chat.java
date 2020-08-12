@@ -23,7 +23,7 @@ public class Chat implements Listener {
         String noChatMessage = MiddCraft.getPluginInstance().getConfig().getString("no-chat");
         if(!player.hasPermission("middcraft.chat")) {
             event.setCancelled(true);
-            player.sendMessage(noChatMessage);
+            if(!(noChatMessage == null)) { player.sendMessage(noChatMessage); }
         }
     }
 }

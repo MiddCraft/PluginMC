@@ -66,11 +66,13 @@ public class Welcome implements Listener {
         String group = "build";
         String motdAll = MiddCraft.getPluginInstance().getConfig().getString("motd-all");
         String noPermsMessage = MiddCraft.getPluginInstance().getConfig().getString("motd-no-perms");
-        if (!this.isPlayerInGroup(player, group)) {
-            String motd = motdAll + "\n" + noPermsMessage;
-            player.sendMessage(motd);
-        } else {
-            player.sendMessage(motdAll);
+
+        if (!(motdAll == null) && !(noPermsMessage == null)) {
+            if (!this.isPlayerInGroup(player, group)) {
+                player.sendMessage(motdAll + "\n" + noPermsMessage);
+            } else {
+                player.sendMessage(motdAll);
+            }
         }
     }
 
